@@ -1,0 +1,82 @@
+/* --- GRAPHICS ENGINE ACCELERATED ANIMATIONS --- */
+
+/* Initial Invisible State classes for JavaScript Intersection Observer Engine */
+.reveal-fade-up, .reveal-scale, .reveal-slide-left, .reveal-slide-right {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-fade-up { transform: translateY(40px); }
+.reveal-scale { transform: scale(0.92); }
+.reveal-slide-left { transform: translateX(-40px); }
+.reveal-slide-right { transform: translateX(40px); }
+
+/* Triggered State Activation */
+.reveal-active {
+    opacity: 1;
+    transform: translate(0) scale(1);
+}
+
+/* Hero Section Decorative Floating Keyframes */
+.floating-shapes .shape {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255,111,97,0.2) 0%, rgba(74,144,226,0.2) 100%);
+    animation: floatShape 8s ease-in-out infinite alternate;
+    z-index: 2;
+}
+
+.shape-1 { width: 150px; height: 150px; top: 15%; left: 10%; }
+.shape-2 { width: 220px; height: 220px; bottom: 20%; right: 8%; animation-delay: -3s !important; }
+
+@keyframes floatShape {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-30px) rotate(15deg); }
+}
+
+/* Mouse Wheel Arrow Indicators Animation loop */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.mouse-wheel {
+    width: 26px;
+    height: 42px;
+    border: 2px solid rgba(248, 250, 252, 0.7);
+    border-radius: 20px;
+    position: relative;
+}
+
+.mouse-wheel::before {
+    content: '';
+    position: absolute;
+    top: 8px; left: 50%; width: 6px; height: 6px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: wheelScroll 1.6s ease-in-out infinite;
+}
+
+@keyframes wheelScroll {
+    0% { top: 8px; opacity: 1; }
+    100% { top: 24px; opacity: 0; }
+}
+
+/* Button Internal Interaction Click Layer Effect */
+.ripple-element {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: rippleEffect 0.5s linear;
+    background-color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    to { transform: scale(4); opacity: 0; }
+}
